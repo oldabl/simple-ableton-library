@@ -1,0 +1,322 @@
+/* ===== Reset & Base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color-scheme: light dark;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  background: light-dark(#fff, #000);
+  color: light-dark(#222, #ddd);
+  line-height: 1.6;
+  padding: 1rem;
+}
+
+/* ===== Header ===== */
+h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: light-dark(#333, #ccc);
+  letter-spacing: -0.5px;
+}
+
+h1::before {
+  content: "🎵 ";
+  font-size: 1.5em;
+  vertical-align: middle;
+}
+
+/* ===== Info Panel (Secondary, collapsible) ===== */
+.lister_details {
+  max-width: 800px;
+  margin: 0 auto 0;
+  font-size: 0.85rem;
+  color: light-dark(#666, #999);
+}
+
+.lister_details details {
+  border-top: 1px solid light-dark(#eee, #111);
+  border-bottom: 1px solid light-dark(#eee, #111);
+  padding: 0.5rem 0;
+}
+
+.lister_details summary {
+  font-weight: 500;
+  color: #0077ff;
+  cursor: pointer;
+  list-style: none;
+}
+
+.lister_details summary::after {
+  content: " ➕";
+  color: #0077ff;
+}
+
+.lister_details details[open] summary::after {
+  content: " ➖";
+  color: #2ecc71;
+}
+
+.lister_details ul {
+  margin-top: 0.5rem;
+  list-style: none;
+}
+
+.lister_details li {
+  margin: 0.3rem 0;
+}
+
+.lister_details li::before {
+  content: "ℹ️ ";
+}
+
+.lister_details .file_path {
+  font-style: italic;
+}
+
+/* ===== Sort and Filter Controls ===== */
+.controls {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  font-size: 0.85rem;
+  color: light-dark(#666, #999);
+  border-bottom: 1px solid light-dark(#eee, #111);
+  padding: 0.5rem 0;
+}
+
+.controls div {
+  display: inline;
+}
+
+.controls .filter {
+  margin-left: 1rem;
+}
+
+.controls .filter input {
+  display: none;
+}
+
+.controls .filter input + span {
+  display: inline-block;
+  background: light-dark(#999, #666);
+  border-radius: 4px;
+  color: light-dark(#fff, #fff);
+  padding: 2px 8px;
+  cursor: pointer;
+  margin-right: 2px;
+}
+
+.controls .filter input:checked + span {
+  background: light-dark(#000, #fff);
+  color: light-dark(#fff, #000);
+}
+
+/* ===== Compositions Grid ===== */
+.compositions {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== Composition Card ===== */
+.composition {
+  padding: 1rem;
+  border-bottom: 1px solid light-dark(#eee, #111); /* only divider */
+  -webkit-transition: background-color 0.5s;
+  -moz-transition:    background-color 0.5s;
+  -ms-transition:     background-color 0.5s;
+  -o-transition:      background-color 0.5s;
+  transition:         background-color 0.5s;
+}
+
+.composition:hover {
+  background-color: light-dark(#f6f6f6, #0b0b0b);
+}
+
+.composition .songname {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  word-break: break-word;
+}
+
+.composition h3 {
+  font-size: 0.8rem;
+  margin-bottom: 0.3rem;
+  word-break: break-word;
+}
+
+.composition .album::before {
+  content: "💿 ";
+}
+
+.composition .ep::before {
+  content: "  + ";
+}
+
+.composition .artist::before {
+  content: "👤 ";
+}
+
+/* ===== File path wrapping ===== */
+.activity_path {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+  overflow-wrap: anywhere;
+}
+
+.activity_path span {
+  font-style: italic;
+}
+
+.last_activity::before {
+  content: "⏱ ";
+}
+
+.als_file_path::before {
+  content: "🗀 ";
+}
+
+.audio_file.not_exported::before {
+  content: "▷ ";
+}
+
+.audio_file.not_exported {
+  font-weight: bold;
+}
+
+.audio_file audio {
+  vertical-align: middle;
+  width: 100%;
+  max-width: 250px;
+  margin-top: 0.3rem;
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: light-dark(#ffffff, #222222);
+  padding: 0;
+}
+
+audio::-webkit-media-controls-enclosure {
+  border-radius: 5px;
+}
+
+/* ===== Status with Emoji ===== */
+.status {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.composition.unfinished .status {
+  color: light-dark(#d33, rgb(231, 45, 45));
+}
+
+.composition.unfinished .status::after {
+  content: " 🚧";
+}
+
+.composition.finished .status {
+  color: light-dark(#2ecc71, #09a94c);
+}
+
+.rework_multiple_lines span:first-of-type::after {
+  content: "⮧";
+}
+
+.rework_multiple_lines span:last-of-type {
+  margin-left: 5%;
+  padding-left: 3%;
+  display: block;
+  border-left: 1px solid light-dark(#ddd, #aaa);
+  font-size: 0.9em;
+}
+
+.rework span:last-of-type {
+  padding: 0 2%;
+  background: light-dark(#fafafa, #111);
+}
+
+.rework::before {
+  content: "🔁 ";
+  color: #e67e22;
+}
+
+/* ===== Finished Composition Styling ===== */
+.composition.finished {
+  background: light-dark(#fafffa, #001100);
+  border-left: 3px solid #2ecc71;
+  padding-left: 0.7rem;
+}
+
+.composition.finished:hover {
+  background-color: light-dark(#ebffeb, #002200);
+}
+
+/* ===== Collapsible Extra Info (click to open) ===== */
+details {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+}
+
+details summary {
+  font-weight: 500;
+  color: #0077ff;
+  cursor: pointer;
+  margin-bottom: 0.3rem;
+}
+
+details summary::after {
+  content: " ➕";
+  color: #0077ff;
+}
+
+details[open] summary::after {
+  content: " ➖";
+  color: #2ecc71;
+}
+
+details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.3rem;
+}
+
+details th,
+details td {
+  padding: 0.2rem 0.3rem;
+  text-align: left;
+  border-bottom: 1px solid light-dark(#f0f0f0, #cccccc);
+  vertical-align: top;
+}
+
+details th {
+  font-weight: 600;
+  color: light-dark(#444, #999);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  body {
+    padding: 0.5rem;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  .composition {
+    padding: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .compositions {
+    display: inline;
+  }
+}
